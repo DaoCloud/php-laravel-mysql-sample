@@ -2,7 +2,7 @@ FROM php:5.6-apache
 
 # APT 自动安装PHP相关的依赖包,如需其他依赖包在此添加
 RUN apt-get update -q && \
-    apt-get install -yq \
+    apt-get install -y \
         libmcrypt-dev \
         libz-dev \
         git \

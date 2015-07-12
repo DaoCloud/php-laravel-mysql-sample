@@ -1,13 +1,3 @@
-# php-laravel-mysql-sample
-
-laravel V5.1.4 安装包来源 http://www.golaravel.com/download/
-
-* 复制 `.env.example` 为 `.env`。这也是 laravel-installer 自动完成的一步工作。
-* 执行 `php artisan key:generate` 为应用生成 `key` 。这也是 `laravel-installer` 自动完成的收尾工作。
-
-## Dockerfile
-
-```
 FROM php:5.6-apache
 
 # APT 自动安装PHP相关的依赖包,如需其他依赖包在此添加
@@ -59,4 +49,4 @@ RUN composer install && \
     chown -R www-data:www-data /app && \
     chmod -R 0777 /app/storage
 
-```
+

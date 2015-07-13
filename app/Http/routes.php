@@ -14,7 +14,18 @@
 use App\Contact;
 
 Route::get('/', function () {
-    $contacts = Contact::all();
+    try {
+        $contacts = Contact::all();
+
+    } catch (PDOException $e) {
+        try {
+            Artisan::call('migrate');
+            Artisan::call('db:seed');
+        } catch (PDOException $e) {
+            return '请确认数据库链接是否正确';
+        }
+        return '数据库创建中，请刷新';
+    }
 
     return view('contacts')
         ->with('contacts', $contacts);

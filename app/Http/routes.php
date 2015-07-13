@@ -11,6 +11,25 @@
 |
 */
 
+use App\Contact;
+
 Route::get('/', function () {
-    return view('welcome');
+    $contacts = Contact::all();
+
+    return view('contacts')
+        ->with('contacts', $contacts);
+});
+
+Route::post('/', function () {
+    Contact::create(Input::all());
+
+    return back();
+});
+
+Route::get('/{id}/delete', function ($id) {
+    $contact = Contact::find($id);
+
+    $contact->delete();
+
+    return back();
 });

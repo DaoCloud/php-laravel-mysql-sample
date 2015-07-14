@@ -12,7 +12,9 @@ RUN apt-get update -q && \
     docker-php-ext-install \
         mcrypt \
         mbstring \
+        pdo_mysql \
         zip && \
+
 
     # 用完包管理器后安排打扫卫生可以显著的减少镜像大小.
     apt-get clean && \

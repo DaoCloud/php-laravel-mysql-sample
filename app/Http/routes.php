@@ -13,19 +13,15 @@
 
 use App\Contact;
 
-Route::get('/', function () {
-    try {
-        $contacts = Contact::all();
 
-    } catch (PDOException $e) {
-        try {
-            Artisan::call('migrate');
-            Artisan::call('db:seed');
-        } catch (PDOException $e) {
-            return '请确认数据库链接是否正确';
-        }
-        return '数据库创建中，请刷新';
-    }
+$isInstall = Schema::hasTable('contacts');
+if (!$isInstall) {
+    Artisan::call('migrate');
+    Artisan::call('db:seed');
+}
+
+Route::get('/', function () {
+    $contacts = Contact::all();
 
     return view('contacts')
         ->with('contacts', $contacts);

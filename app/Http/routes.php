@@ -18,8 +18,8 @@ Route::get('/', function () {
     $isInstall = Schema::hasTable('contacts');
     if (!$isInstall) {
 
-        Artisan::call('migrate', ['--force' => '']);
-        Artisan::call('db:seed', ['--force' => '']);
+        Artisan::call('migrate', ['--force' => true]);
+        Artisan::call('db:seed', ['--force' => true]);
     }
 
 

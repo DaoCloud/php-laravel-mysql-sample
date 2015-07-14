@@ -14,13 +14,13 @@
 use App\Contact;
 
 
-$isInstall = Schema::hasTable('contacts');
-if (!$isInstall) {
-    Artisan::call('migrate');
-    Artisan::call('db:seed');
-}
-
 Route::get('/', function () {
+    $isInstall = Schema::hasTable('contacts');
+    if (!$isInstall) {
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+    }
+
     $contacts = Contact::all();
 
     return view('contacts')

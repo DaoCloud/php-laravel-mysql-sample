@@ -17,9 +17,11 @@ use App\Contact;
 Route::get('/', function () {
     $isInstall = Schema::hasTable('contacts');
     if (!$isInstall) {
-        Artisan::call('migrate');
-        Artisan::call('db:seed');
+
+        Artisan::call('migrate', ['--force' => '']);
+        Artisan::call('db:seed', ['--force' => '']);
     }
+
 
     $contacts = Contact::all();
 

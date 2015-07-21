@@ -77,7 +77,7 @@ RUN composer install  --no-autoloader --no-scripts
 
 然后，将 Laravel 应用程序复制到 `/app`：
 
-```
+```dockerfile
 # 复制代码到 App 目录
 COPY . /app
 
@@ -96,7 +96,7 @@ RUN composer install \
 
 `config/database.php` 修改变量为更贴近 Docker 的方式：
 
-```
+```php
 'host'      => env('MYSQL_PORT_3306_TCP_ADDR', 'localhost'),
 'database'  => env('MYSQL_INSTANCE_NAME', 'forge'),
 'username'  => env('MYSQL_USERNAME', 'forge'),
@@ -109,13 +109,14 @@ RUN composer install \
 
 首先，需要创建一个 MySQL 容器。
 
-```
-root# docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+```bash
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
 ```
 
 之后，通过 Docker 容器间的`link`机制，便可将 MySQL 的默认端口 (3306) 暴露给应用容器。
-```
-root# docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
+
+```bash
+docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 ```
 
 ### 绑定 MySQL 数据服务（云端）

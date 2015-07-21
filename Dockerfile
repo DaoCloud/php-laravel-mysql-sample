@@ -1,39 +1,36 @@
 FROM php:5.6-apache
 
-# APT 自动安装PHP相关的依赖包,如需其他依赖包在此添加
-RUN apt-get update -q && \
-    apt-get install -y \
+# APT 自动安装 PHP 相关的依赖包,如需其他依赖包在此添加
+RUN apt-get update \
+    && apt-get install -y \
         libmcrypt-dev \
         libz-dev \
         git \
-        wget && \
+        wget \
 
-    #  Docker Hub 官方 PHP 镜像内置命令，安装 PHP 拓展
-    docker-php-ext-install \
+    # 官方 PHP 镜像内置命令，安装 PHP 依赖
+    && docker-php-ext-install \
         mcrypt \
         mbstring \
         pdo_mysql \
-        zip && \
+        zip \
 
 
-    # 用完包管理器后安排打扫卫生可以显著的减少镜像大小.
-    apt-get clean && \
-    apt-get autoclean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
+    && apt-get clean \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
-    # 安装Composer,此物是PHP用来管理依赖关系的工具.
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+    # 安装 Composer，此物是 PHP 用来管理依赖关系的工具
+    && curl -sS https://getcomposer.org/installer \
+        | php -- --install-dir=/usr/local/bin --filename=composer
 
-# 配置 composer 执行.
-ENV PATH=$PATH:~/.composer/vendor/bin
-
-
-# 开启 Url 重写模块
+# 开启 URL 重写模块
 # 配置默认放置 App 的目录
-RUN a2enmod rewrite && \
-    mkdir -p /app && \
-    rm -fr /var/www/html && \
-    ln -s /app/public /var/www/html
+RUN a2enmod rewrite \
+    && mkdir -p /app \
+    && rm -fr /var/www/html \
+    && ln -s /app/public /var/www/html
 
 WORKDIR /app
 
@@ -47,8 +44,6 @@ COPY . /app
 
 # 执行 Composer 自动加载和相关脚本
 # 修改目录权限
-RUN composer install && \
-    chown -R www-data:www-data /app && \
-    chmod -R 0777 /app/storage
-
-
+RUN composer install \
+    && chown -R www-data:www-data /app \
+    && chmod -R 0777 /app/storage

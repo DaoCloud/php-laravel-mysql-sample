@@ -10,13 +10,13 @@
 
 首先，选择官方的 PHP 镜像作为项目的基础镜像。
 
-```Dockerfile
+```dockerfile
 FROM daocloud.io/php:5.6-apache
 ```
 
 其次，通过安装脚本安装 Laravel 应用所需要的 PHP 依赖。
 
-```Dockerfile
+```dockerfile
 # 安装 PHP 相关的依赖包，如需其他依赖包在此添加
 RUN apt-get update \
     && apt-get install -y \
@@ -48,7 +48,7 @@ RUN apt-get update \
 
 接着，创建 Laravel 目录结构：
 
-```Dockerfile
+```dockerfile
 # 开启 URL 重写模块
 # 配置默认放置 App 的目录
 RUN a2enmod rewrite \
@@ -64,7 +64,7 @@ WORKDIR /app
 
 紧接着，根据 DaoCloud 的最佳实践，我们需要把第三方依赖预先加载好。
 
-```Dockerfile
+```dockerfile
 # 预先加载 Composer 包依赖，优化 Docker 构建镜像的速度
 COPY ./composer.json /app/
 COPY ./composer.lock /app/

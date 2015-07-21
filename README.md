@@ -138,4 +138,4 @@ root# docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 
 ### php-laravel-mysql-sample 应用截图
 
-![php-laravel-mysql-sample](/php-laravel-mysql.png "php-laravel-mysql")
+![php-laravel-mysql-sample](/php-laravel-mysql-sample.png "php-laravel-mysql")

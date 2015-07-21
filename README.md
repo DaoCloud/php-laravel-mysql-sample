@@ -129,6 +129,8 @@ root# docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 5. 在「服务集成」创建 MySQL 服务实例。
 6. 将构建的应用镜像关联 MySQL 服务实例并部署在云端。
 
+DaoCloud 使用图文介绍
+
 * 了解如何用 DaoCloud 进行代码构建：参考[代码构建](http://help.daocloud.io/features/build-flows.html)。
 * 了解如何用 DaoCloud 进行持续集成：参考[持续集成](http://help.daocloud.io/features/continuous-integration/index.html)。
 * 了解如何用为应用准备一个数据库服务：参考[服务集成](http://help.daocloud.io/features/services.html)。

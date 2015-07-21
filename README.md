@@ -122,17 +122,17 @@ root# docker run --name some-app --link some-mysql:mysql -d app-that-uses-mysql
 
 比起本地创建，在云端创建和绑定 MySQL 数据服务会更简单。
 
-* 在 GitHub 上 Fork **[DaoCloud/php-laravel-mysql-sample](https://github.com/DaoCloud/php-laravel-mysql-sample)** 或者添加自己的代码仓库。
-* 注册成为 DaoCloud 用户。
-* 在 DaoCloud 「控制台」中选择「代码构建」。
-* 创建新项目，并选择代码源，指定 `Dockerfile` 路径，构建镜像。
-* 在「服务集成」创建 MySQL 服务实例。
-* 将构建的应用镜像关联 MySQL 服务实例并部署在云端。
+1. 在 GitHub 上 Fork **[DaoCloud/php-laravel-mysql-sample](https://github.com/DaoCloud/php-laravel-mysql-sample)** 或者添加自己的代码仓库。
+2. 注册成为 DaoCloud 用户。
+3. 在 DaoCloud 「控制台」中选择「代码构建」。
+4. 创建新项目，并选择代码源，指定 `Dockerfile` 路径，构建镜像。
+5. 在「服务集成」创建 MySQL 服务实例。
+6. 将构建的应用镜像关联 MySQL 服务实例并部署在云端。
 
-了解如何用 DaoCloud 进行代码构建：参考[代码构建](http://help.daocloud.io/features/build-flows.html)。
-了解如何用 DaoCloud 进行持续集成：参考[持续集成](http://help.daocloud.io/features/continuous-integration/index.html)。
-了解如何用为应用准备一个数据库服务：参考[服务集成](http://help.daocloud.io/features/services.html)。
-了解如何部署一个刚刚构建好的应用镜像：参考[应用部署](http://help.daocloud.io/features/packages.html)。
+* 了解如何用 DaoCloud 进行代码构建：参考[代码构建](http://help.daocloud.io/features/build-flows.html)。
+* 了解如何用 DaoCloud 进行持续集成：参考[持续集成](http://help.daocloud.io/features/continuous-integration/index.html)。
+* 了解如何用为应用准备一个数据库服务：参考[服务集成](http://help.daocloud.io/features/services.html)。
+* 了解如何部署一个刚刚构建好的应用镜像：参考[应用部署](http://help.daocloud.io/features/packages.html)。
 
 [DaoCloud 使用视频介绍](http://7u2psl.com2.z0.glb.qiniucdn.com/daocloud_small.mp4)
 
